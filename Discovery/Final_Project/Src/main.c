@@ -99,11 +99,22 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+
   while (1)
   {
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+	char aMESSAGE[8] = "WHATEVER";
+	char bMESSAGE[10] = "0123456789";
+	HAL_UART_Transmit(&huart2, (uint8_t*)aMESSAGE,10, 0xFFF);
+	if(HAL_UART_Transmit(&huart2, (uint8_t*)aMESSAGE,10, 0xFFF) == HAL_OK){
+		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+	}else{
+		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13)
+	}
+	HAL_UART_Transmit(&huart2, (uint8_t*)bMESSAGE,10, 0xFFF);
 
   }
   /* USER CODE END 3 */
