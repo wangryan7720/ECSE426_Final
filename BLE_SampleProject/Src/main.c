@@ -149,6 +149,8 @@ int main(void)
 	
 	// USART2 Pins, found in Discovery Board document
 	__GPIOA_CLK_ENABLE();
+	__GPIOB_CLK_ENABLE();
+	
 	
 	GPIO_InitTypeDef GPIO_InitStruct;
 	
@@ -156,7 +158,7 @@ int main(void)
 	GPIO_InitStruct.Pin = GPIO_PIN_2;
 	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
 	GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 	
@@ -164,10 +166,22 @@ int main(void)
 	GPIO_InitStruct.Pin = GPIO_PIN_3;
 	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
 	GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+	/*
+	GPIO_InitStruct.Pin = GPIO_PIN_5;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_PULLUP;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 	
+	GPIO_InitStruct.Pin = GPIO_PIN_13;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_PULLUP;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	*/
 	/* USER CODE END 0 */  
   
   /* STM32Cube HAL library initialization:
@@ -313,7 +327,7 @@ int main(void)
 
   /* Set output power level */
   ret = aci_hal_set_tx_power_level(1,4);
-
+	BSP_LED_Init(LED2); 
   while(1)
   {
     HCI_Process();
@@ -321,6 +335,17 @@ int main(void)
 #if NEW_SERVICES
     Update_Time_Characteristics();
 #endif
+		uint8_t data;
+		HAL_StatusTypeDef a;
+		a = HAL_UART_Receive(&huart2, &data, 10, 100000000);
+		if (a == HAL_OK) {
+			for (int i = 0; i < 1000000; i++) {
+			}
+			BSP_LED_On(LED2);
+			for (int i = 0; i < 1000000; i++) {
+			}
+			BSP_LED_Off(LED2);
+		}
   }
 }
 
