@@ -88,9 +88,9 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-	UART_HandleTypeDef uartHandle;
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+	UART_HandleTypeDef uartHandle;
 	HAL_UART_MspInit(&uartHandle);
 
   /* USER CODE BEGIN 2 */
@@ -106,16 +106,14 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-	char aMESSAGE[8] = "WHATEVER";
-	char bMESSAGE[10] = "0123456789";
-	HAL_UART_Transmit(&huart2, (uint8_t*)aMESSAGE,10, 0xFFF);
-	if(HAL_UART_Transmit(&huart2, (uint8_t*)aMESSAGE,10, 0xFFF) == HAL_OK){
-		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
-		delay(10);
+	char aMESSAGE[1] = "A";
+	HAL_StatusTypeDef a = HAL_UART_Transmit(&huart2, (uint8_t*)aMESSAGE,1, 0xFFF);
+	if(a == HAL_OK){
+		//HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
 	}else{
-		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
 	}
-	HAL_UART_Transmit(&huart2, (uint8_t*)bMESSAGE,10, 0xFFF);
 
   }
   /* USER CODE END 3 */
@@ -144,7 +142,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 8;
-  RCC_OscInitStruct.PLL.PLLN = 50;
+  RCC_OscInitStruct.PLL.PLLN = 64;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
   RCC_OscInitStruct.PLL.PLLQ = 7;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
@@ -161,7 +159,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV8;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }

@@ -335,17 +335,20 @@ int main(void)
 #if NEW_SERVICES
     Update_Time_Characteristics();
 #endif
-		uint8_t data;
+		char aMESSAGE[1];
 		HAL_StatusTypeDef a;
-		a = HAL_UART_Receive(&huart2, &data, 10, 100000000);
+		a = HAL_UART_Receive(&huart2, (uint8_t*)aMESSAGE, 1, 0xFFF);
 		if (a == HAL_OK) {
-			for (int i = 0; i < 1000000; i++) {
-			}
 			BSP_LED_On(LED2);
-			for (int i = 0; i < 1000000; i++) {
-			}
+		} else {
 			BSP_LED_Off(LED2);
 		}
+//		for (int i = 0; i < 1000000; i++) {
+//			}
+//			BSP_LED_On(LED2);
+//			for (int i = 0; i < 1000000; i++) {
+//			}
+//			BSP_LED_Off(LED2);
   }
 }
 
