@@ -105,7 +105,7 @@ int main(void)
 		if (txFlag == 0) {
 
 			txFlag = 1;
-			uint8_t a[5] = {1,2,3,4,5};
+			uint8_t a[5] = {5,2,3,4,5};
 			int b = HAL_UART_Transmit_IT(&huart5, &a[0], 5);
 			//printf("I am here");
 		}

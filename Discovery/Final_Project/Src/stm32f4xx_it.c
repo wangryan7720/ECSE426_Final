@@ -84,7 +84,6 @@ void UART5_IRQHandler(void)
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
 	txFlag = 0;
-				HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
 }
 
 /* USER CODE BEGIN 1 */
