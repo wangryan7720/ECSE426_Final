@@ -54,7 +54,8 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-
+extern UART_HandleTypeDef huart5;
+int txFlag = 0;
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
@@ -87,33 +88,29 @@ int main(void)
 
   /* USER CODE END SysInit */
 
-  /* Initialize all configured peripherals */
+  /* Initialize all configured peripherals */	
   MX_GPIO_Init();
-  MX_USART2_UART_Init();
-	UART_HandleTypeDef uartHandle;
-	HAL_UART_MspInit(&uartHandle);
+  MX_UART5_Init();
+	HAL_UART_MspInit(&huart5);
 
   /* USER CODE BEGIN 2 */
-
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-
   while (1)
   {
   /* USER CODE END WHILE */
+		if (txFlag == 0) {
+
+			txFlag = 1;
+			uint8_t a[5] = {1,2,3,4,5};
+			int b = HAL_UART_Transmit_IT(&huart5, &a[0], 5);
+			//printf("I am here");
+		}
 
   /* USER CODE BEGIN 3 */
-	char aMESSAGE[1] = "A";
-	HAL_StatusTypeDef a = HAL_UART_Transmit(&huart2, (uint8_t*)aMESSAGE,1, 0xFFF);
-	if(a == HAL_OK){
-		//HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-	}else{
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
-	}
 
   }
   /* USER CODE END 3 */

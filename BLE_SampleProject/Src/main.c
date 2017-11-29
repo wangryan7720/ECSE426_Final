@@ -46,7 +46,7 @@
 #include "debug.h"
 #include "stm32_bluenrg_ble.h"
 #include "bluenrg_utils.h"
-
+#include "stm32f4xx_hal.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -73,7 +73,10 @@
  */
  
 /* Private macros ------------------------------------------------------------*/
-
+static void MX_USART6_UART_Init(void);
+void _Error_Handler(char * file, int line);
+void HAL_UART_MspInit(UART_HandleTypeDef* huart);
+UART_HandleTypeDef huart6;
 /** @defgroup MAIN_Private_Variables
  * @{
  */
@@ -82,7 +85,6 @@ extern volatile uint8_t set_connectable;
 extern volatile int connected;
 extern AxesRaw_t axes_data;
 uint8_t bnrg_expansion_board = IDB04A1; /* at startup, suppose the X-NUCLEO-IDB04A1 is used */
-UART_HandleTypeDef huart2;
 /**
  * @}
  */
@@ -129,60 +131,7 @@ int main(void)
   uint8_t  hwVersion;
   uint16_t fwVersion;
   
-  int ret;
-
-	/* USER CODE BEGIN 0 */
-	
-	// UARTs Configuration from Tutorial
-	huart2.Instance = USART2;
-	huart2.Init.BaudRate = 115200;
-	huart2.Init.WordLength = UART_WORDLENGTH_8B;
-	huart2.Init.StopBits = UART_STOPBITS_1;
-	huart2.Init.Parity = UART_PARITY_NONE;
-	huart2.Init.Mode = UART_MODE_TX_RX;
-	huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-	huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-	
-	HAL_UART_Init(&huart2);
-	
-	__HAL_RCC_USART2_CLK_ENABLE();
-	
-	// USART2 Pins, found in Discovery Board document
-	__GPIOA_CLK_ENABLE();
-	__GPIOB_CLK_ENABLE();
-	
-	
-	GPIO_InitTypeDef GPIO_InitStruct;
-	
-	// USART2_TX Pin, PD5 can also work?
-	GPIO_InitStruct.Pin = GPIO_PIN_2;
-	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-	GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
-	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-	
-	// USART2_RX Pin, PD6 can also work?
-	GPIO_InitStruct.Pin = GPIO_PIN_3;
-	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-	GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
-	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-	/*
-	GPIO_InitStruct.Pin = GPIO_PIN_5;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-	
-	GPIO_InitStruct.Pin = GPIO_PIN_13;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-	*/
-	/* USER CODE END 0 */  
+  int ret;  
   
   /* STM32Cube HAL library initialization:
    *  - Configure the Flash prefetch, Flash preread and Buffer caches
@@ -327,7 +276,9 @@ int main(void)
 
   /* Set output power level */
   ret = aci_hal_set_tx_power_level(1,4);
-	BSP_LED_Init(LED2); 
+
+	MX_USART6_UART_Init();
+	HAL_UART_MspInit(&huart6);
   while(1)
   {
     HCI_Process();
@@ -335,21 +286,61 @@ int main(void)
 #if NEW_SERVICES
     Update_Time_Characteristics();
 #endif
-		char aMESSAGE[1];
-		HAL_StatusTypeDef a;
-		a = HAL_UART_Receive(&huart2, (uint8_t*)aMESSAGE, 1, 0xFFF);
-		if (a == HAL_OK) {
-			BSP_LED_On(LED2);
-		} else {
-			BSP_LED_Off(LED2);
-		}
-//		for (int i = 0; i < 1000000; i++) {
-//			}
-//			BSP_LED_On(LED2);
-//			for (int i = 0; i < 1000000; i++) {
-//			}
-//			BSP_LED_Off(LED2);
+		uint8_t a[5] = {1,2,3,4,5};
+		HAL_UART_Transmit(&huart6, &a[0], 5, 1000);
   }
+}
+
+/* USART6 init function */
+static void MX_USART6_UART_Init(void)
+{
+
+  huart6.Instance = USART6;
+  huart6.Init.BaudRate = 115200;
+  huart6.Init.WordLength = UART_WORDLENGTH_8B;
+  huart6.Init.StopBits = UART_STOPBITS_1;
+  huart6.Init.Parity = UART_PARITY_NONE;
+  huart6.Init.Mode = UART_MODE_TX_RX;
+  huart6.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart6.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart6) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
+void HAL_UART_MspInit(UART_HandleTypeDef* huart)
+{
+
+  GPIO_InitTypeDef GPIO_InitStruct;
+  if(huart->Instance==USART6)
+  {
+  /* USER CODE BEGIN USART6_MspInit 0 */
+
+  /* USER CODE END USART6_MspInit 0 */
+    /* Peripheral clock enable */
+    __HAL_RCC_USART6_CLK_ENABLE();
+  
+    /**USART6 GPIO Configuration    
+    PC6     ------> USART6_TX
+    PC7     ------> USART6_RX 
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF8_USART6;
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+    /* USART6 interrupt Init */
+    HAL_NVIC_SetPriority(USART6_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(USART6_IRQn);
+  /* USER CODE BEGIN USART6_MspInit 1 */
+
+  /* USER CODE END USART6_MspInit 1 */
+  }
+
 }
 
 /**
@@ -385,6 +376,15 @@ void User_Process(AxesRaw_t* p_axes)
   }
 }
 
+void _Error_Handler(char * file, int line)
+{
+  /* USER CODE BEGIN Error_Handler_Debug */
+  /* User can add his own implementation to report the HAL error return state */
+  while(1) 
+  {
+  }
+  /* USER CODE END Error_Handler_Debug */ 
+}
 /**
  * @}
  */

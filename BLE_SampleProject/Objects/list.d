@@ -1,6 +1,6 @@
 .\objects\list.o: BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\utils\list.c
 .\objects\list.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\hal_types.h
-.\objects\list.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\list.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\list.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\list.h
 .\objects\list.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 .\objects\list.o: .\Inc\stm32f4xx_hal_conf.h
@@ -15,7 +15,7 @@
 .\objects\list.o: .\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h
 .\objects\list.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 .\objects\list.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-.\objects\list.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\list.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\list.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h
 .\objects\list.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h
 .\objects\list.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h

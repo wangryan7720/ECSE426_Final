@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=//campus.mcgill.ca/EMF/ELE/alin24/Desktop/ECSE426/ECSE426_Final/Discovery/Final_Project/Inc
+HeaderPath=//campus.mcgill.ca/EMF/ELE/lwang120/Desktop/ECSE_426/ECSE426_Final/Discovery/Final_Project/Inc
 HeaderFiles=gpio.h;usart.h;stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;
-SourcePath=//campus.mcgill.ca/EMF/ELE/alin24/Desktop/ECSE426/ECSE426_Final/Discovery/Final_Project/Src
+SourcePath=//campus.mcgill.ca/EMF/ELE/lwang120/Desktop/ECSE_426/ECSE426_Final/Discovery/Final_Project/Src
 SourceFiles=gpio.h;usart.h;stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;gpio.c;usart.c;stm32f4xx_it.c;stm32f4xx_hal_msp.c;main.c;
 
 [PreviousLibFiles]
