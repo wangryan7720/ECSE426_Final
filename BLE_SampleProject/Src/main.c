@@ -77,6 +77,7 @@ static void MX_USART6_UART_Init(void);
 void _Error_Handler(char * file, int line);
 void HAL_UART_MspInit(UART_HandleTypeDef* huart);
 UART_HandleTypeDef huart6;
+extern int rxFlag;
 /** @defgroup MAIN_Private_Variables
  * @{
  */
@@ -281,13 +282,27 @@ int main(void)
 	HAL_UART_MspInit(&huart6);
   while(1)
   {
+		uint8_t a[5];
+		HAL_UART_Receive(&huart6, &a[0], 5, 1000);
+		for (int i = 0; i < 5; i++) {
+				printf("%d\n", a[i]);
+		}
+		/*
+		if(rxFlag == 0){
+			printf("Hello\n");
+			rxFlag = 1;
+			uint8_t a[5];
+			HAL_UART_Receive_IT(&huart6, &a[0], 5);
+			for (int i = 0; i < 5; i++) {
+				printf("%d\n", a[i]);
+			}
+		}
+		*/
     HCI_Process();
     User_Process(&axes_data);
 #if NEW_SERVICES
     Update_Time_Characteristics();
 #endif
-		uint8_t a[5] = {1,2,3,4,5};
-		HAL_UART_Transmit(&huart6, &a[0], 5, 1000);
   }
 }
 
@@ -296,7 +311,7 @@ static void MX_USART6_UART_Init(void)
 {
 
   huart6.Instance = USART6;
-  huart6.Init.BaudRate = 115200;
+  huart6.Init.BaudRate = 9600;
   huart6.Init.WordLength = UART_WORDLENGTH_8B;
   huart6.Init.StopBits = UART_STOPBITS_1;
   huart6.Init.Parity = UART_PARITY_NONE;
@@ -380,9 +395,6 @@ void _Error_Handler(char * file, int line)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-  while(1) 
-  {
-  }
   /* USER CODE END Error_Handler_Debug */ 
 }
 /**

@@ -61,6 +61,7 @@ volatile uint32_t ms_counter = 0;
 volatile uint8_t button_event = 0;
 /* SPI handler declared in "main.c" file */
 extern SPI_HandleTypeDef SpiHandle;
+int rxFlag = 0;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -160,6 +161,9 @@ void PUSH_BUTTON_EXTI_IRQHandler(void)
   button_event = 1;
 }
 
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+	rxFlag = 0;
+}
 /******************************************************************************/
 /*                 STM32L0xx Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
