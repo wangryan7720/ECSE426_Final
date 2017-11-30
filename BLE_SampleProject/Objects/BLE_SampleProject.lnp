@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp
+--cpu Cortex-M4.fp
 ".\objects\bluenrg_interface.o"
 ".\objects\clock.o"
 ".\objects\cube_hal_f4.o"
@@ -40,6 +40,6 @@
 ".\objects\startup_stm32f401xe.o"
 ".\objects\retarget_io.o"
 --ro-base 0x08000000 --entry 0x08000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict
---diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\BLE_SampleProject.map" -o .\Objects\BLE_SampleProject.axf

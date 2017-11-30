@@ -99,11 +99,19 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+	int counter = 0;
   while (1)
   {
   /* USER CODE END WHILE */
+		while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1) {
+			printf("%d times\n", counter);
+			counter++;
+		}
+		if (counter > 2000) {
+			printf("Transmit or record\n");
+		}
+		counter = 0;
 		if (txFlag == 0) {
-
 			txFlag = 1;
 			uint8_t a[5] = {5,2,3,4,5};
 			int b = HAL_UART_Transmit_IT(&huart5, &a[0], 5);

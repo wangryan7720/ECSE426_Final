@@ -8,14 +8,14 @@
 .\objects\sensor_service.o: .\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\objects\sensor_service.o: .\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xe.h
 .\objects\sensor_service.o: .\Drivers\CMSIS\Include\core_cm4.h
-.\objects\sensor_service.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\sensor_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\sensor_service.o: .\Drivers\CMSIS\Include\core_cmInstr.h
 .\objects\sensor_service.o: .\Drivers\CMSIS\Include\core_cmFunc.h
 .\objects\sensor_service.o: .\Drivers\CMSIS\Include\core_cmSimd.h
 .\objects\sensor_service.o: .\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h
 .\objects\sensor_service.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 .\objects\sensor_service.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-.\objects\sensor_service.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\sensor_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\sensor_service.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h
 .\objects\sensor_service.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h
 .\objects\sensor_service.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h
@@ -40,7 +40,7 @@
 .\objects\sensor_service.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\ble_status.h
 .\objects\sensor_service.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\bluenrg_gap.h
 .\objects\sensor_service.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\link_layer.h
-.\objects\sensor_service.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\sensor_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\sensor_service.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\bluenrg_gap_aci.h
 .\objects\sensor_service.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\bluenrg_gatt_aci.h
 .\objects\sensor_service.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\hci_const.h
@@ -55,4 +55,4 @@
 .\objects\sensor_service.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\hal.h
 .\objects\sensor_service.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\sm.h
 .\objects\sensor_service.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\debug.h
-.\objects\sensor_service.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\sensor_service.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

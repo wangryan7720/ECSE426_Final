@@ -1,7 +1,7 @@
 .\objects\bluenrg_utils_small.o: BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\hci\controller\bluenrg_utils_small.c
 .\objects\bluenrg_utils_small.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\hal.h
 .\objects\bluenrg_utils_small.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\hal_types.h
-.\objects\bluenrg_utils_small.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bluenrg_utils_small.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bluenrg_utils_small.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\ble_status.h
 .\objects\bluenrg_utils_small.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\bluenrg_aci.h
 .\objects\bluenrg_utils_small.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\bluenrg_aci_const.h
@@ -23,7 +23,7 @@
 .\objects\bluenrg_utils_small.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\bluenrg_utils.h
 .\objects\bluenrg_utils_small.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\compiler.h
 .\objects\bluenrg_utils_small.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\osal.h
-.\objects\bluenrg_utils_small.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\bluenrg_utils_small.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\bluenrg_utils_small.o: .\Drivers\BSP\X-NUCLEO-IDB04A1\stm32_bluenrg_ble.h
 .\objects\bluenrg_utils_small.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 .\objects\bluenrg_utils_small.o: .\Inc\stm32f4xx_hal_conf.h
@@ -38,7 +38,7 @@
 .\objects\bluenrg_utils_small.o: .\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h
 .\objects\bluenrg_utils_small.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
 .\objects\bluenrg_utils_small.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-.\objects\bluenrg_utils_small.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\bluenrg_utils_small.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\bluenrg_utils_small.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h
 .\objects\bluenrg_utils_small.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h
 .\objects\bluenrg_utils_small.o: .\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h
