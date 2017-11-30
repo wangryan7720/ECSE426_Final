@@ -2177,27 +2177,27 @@ Image Symbol Table
     i.list_remove_head                       0x08004578   Section        0  list.o(i.list_remove_head)
     i.list_remove_node                       0x080045a2   Section        0  list.o(i.list_remove_node)
     i.main                                   0x080045c4   Section        0  main.o(i.main)
-    i.move_list                              0x080048d0   Section        0  hci.o(i.move_list)
-    move_list                                0x080048d1   Thumb Code    36  hci.o(i.move_list)
-    i.setConnectable                         0x080048f4   Section        0  sensor_service.o(i.setConnectable)
-    i.set_irq_as_input                       0x08004990   Section        0  stm32_bluenrg_ble.o(i.set_irq_as_input)
-    i.set_irq_as_output                      0x080049c8   Section        0  stm32_bluenrg_ble.o(i.set_irq_as_output)
-    i.stdout_putchar                         0x080049f4   Section        0  retarget_io.o(i.stdout_putchar)
-    stdout_putchar                           0x080049f5   Thumb Code    12  retarget_io.o(i.stdout_putchar)
-    i.us150Delay                             0x08004a00   Section        0  stm32_bluenrg_ble.o(i.us150Delay)
-    us150Delay                               0x08004a01   Thumb Code    28  stm32_bluenrg_ble.o(i.us150Delay)
-    x$fpl$fpinit                             0x08004a1c   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x08004a1c   Number         0  fpinit.o(x$fpl$fpinit)
-    .constdata                               0x08004a28   Section        4  clock.o(.constdata)
-    .constdata                               0x08004a2c   Section        5  stm32f4xx_nucleo.o(.constdata)
-    .constdata                               0x08004a31   Section       16  stm32f4xx_hal_rcc.o(.constdata)
-    .constdata                               0x08004a41   Section       23  retarget_io.o(.constdata)
-    .constdata                               0x08004a58   Section       40  _printf_hex_int.o(.constdata)
-    uc_hextab                                0x08004a58   Data          20  _printf_hex_int.o(.constdata)
-    lc_hextab                                0x08004a6c   Data          20  _printf_hex_int.o(.constdata)
-    .constdata                               0x08004a80   Section       17  __printf_flags_wp.o(.constdata)
-    maptable                                 0x08004a80   Data          17  __printf_flags_wp.o(.constdata)
-    .conststring                             0x08004a94   Section      222  sensor_service.o(.conststring)
+    i.move_list                              0x080048b8   Section        0  hci.o(i.move_list)
+    move_list                                0x080048b9   Thumb Code    36  hci.o(i.move_list)
+    i.setConnectable                         0x080048dc   Section        0  sensor_service.o(i.setConnectable)
+    i.set_irq_as_input                       0x08004978   Section        0  stm32_bluenrg_ble.o(i.set_irq_as_input)
+    i.set_irq_as_output                      0x080049b0   Section        0  stm32_bluenrg_ble.o(i.set_irq_as_output)
+    i.stdout_putchar                         0x080049dc   Section        0  retarget_io.o(i.stdout_putchar)
+    stdout_putchar                           0x080049dd   Thumb Code    12  retarget_io.o(i.stdout_putchar)
+    i.us150Delay                             0x080049e8   Section        0  stm32_bluenrg_ble.o(i.us150Delay)
+    us150Delay                               0x080049e9   Thumb Code    28  stm32_bluenrg_ble.o(i.us150Delay)
+    x$fpl$fpinit                             0x08004a04   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x08004a04   Number         0  fpinit.o(x$fpl$fpinit)
+    .constdata                               0x08004a10   Section        4  clock.o(.constdata)
+    .constdata                               0x08004a14   Section        5  stm32f4xx_nucleo.o(.constdata)
+    .constdata                               0x08004a19   Section       16  stm32f4xx_hal_rcc.o(.constdata)
+    .constdata                               0x08004a29   Section       23  retarget_io.o(.constdata)
+    .constdata                               0x08004a40   Section       40  _printf_hex_int.o(.constdata)
+    uc_hextab                                0x08004a40   Data          20  _printf_hex_int.o(.constdata)
+    lc_hextab                                0x08004a54   Data          20  _printf_hex_int.o(.constdata)
+    .constdata                               0x08004a68   Section       17  __printf_flags_wp.o(.constdata)
+    maptable                                 0x08004a68   Data          17  __printf_flags_wp.o(.constdata)
+    .conststring                             0x08004a7c   Section      222  sensor_service.o(.conststring)
     .data                                    0x20000000   Section       12  stm32xx_it.o(.data)
     .data                                    0x2000000c   Section        1  main.o(.data)
     .data                                    0x20000010   Section       30  sensor_service.o(.data)
@@ -2572,23 +2572,23 @@ Image Symbol Table
     list_is_empty                            0x08004557   Thumb Code    34  list.o(i.list_is_empty)
     list_remove_head                         0x08004579   Thumb Code    42  list.o(i.list_remove_head)
     list_remove_node                         0x080045a3   Thumb Code    32  list.o(i.list_remove_node)
-    main                                     0x080045c5   Thumb Code   382  main.o(i.main)
-    setConnectable                           0x080048f5   Thumb Code    74  sensor_service.o(i.setConnectable)
-    set_irq_as_input                         0x08004991   Thumb Code    48  stm32_bluenrg_ble.o(i.set_irq_as_input)
-    set_irq_as_output                        0x080049c9   Thumb Code    40  stm32_bluenrg_ble.o(i.set_irq_as_output)
-    _fp_init                                 0x08004a1d   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x08004a25   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x08004a25   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    CLOCK_SECOND                             0x08004a28   Data           4  clock.o(.constdata)
-    GPIO_PIN                                 0x08004a2c   Data           2  stm32f4xx_nucleo.o(.constdata)
-    BUTTON_PIN                               0x08004a2e   Data           2  stm32f4xx_nucleo.o(.constdata)
-    BUTTON_IRQn                              0x08004a30   Data           1  stm32f4xx_nucleo.o(.constdata)
-    APBAHBPrescTable                         0x08004a31   Data          16  stm32f4xx_hal_rcc.o(.constdata)
-    __stdin_name                             0x08004a41   Data           7  retarget_io.o(.constdata)
-    __stdout_name                            0x08004a48   Data           8  retarget_io.o(.constdata)
-    __stderr_name                            0x08004a50   Data           8  retarget_io.o(.constdata)
-    Region$$Table$$Base                      0x08004b74   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08004b94   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x080045c5   Thumb Code   362  main.o(i.main)
+    setConnectable                           0x080048dd   Thumb Code    74  sensor_service.o(i.setConnectable)
+    set_irq_as_input                         0x08004979   Thumb Code    48  stm32_bluenrg_ble.o(i.set_irq_as_input)
+    set_irq_as_output                        0x080049b1   Thumb Code    40  stm32_bluenrg_ble.o(i.set_irq_as_output)
+    _fp_init                                 0x08004a05   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x08004a0d   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x08004a0d   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    CLOCK_SECOND                             0x08004a10   Data           4  clock.o(.constdata)
+    GPIO_PIN                                 0x08004a14   Data           2  stm32f4xx_nucleo.o(.constdata)
+    BUTTON_PIN                               0x08004a16   Data           2  stm32f4xx_nucleo.o(.constdata)
+    BUTTON_IRQn                              0x08004a18   Data           1  stm32f4xx_nucleo.o(.constdata)
+    APBAHBPrescTable                         0x08004a19   Data          16  stm32f4xx_hal_rcc.o(.constdata)
+    __stdin_name                             0x08004a29   Data           7  retarget_io.o(.constdata)
+    __stdout_name                            0x08004a30   Data           8  retarget_io.o(.constdata)
+    __stderr_name                            0x08004a38   Data           8  retarget_io.o(.constdata)
+    Region$$Table$$Base                      0x08004b5c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08004b7c   Number         0  anon$$obj.o(Region$$Table)
     ms_counter                               0x20000000   Data           4  stm32xx_it.o(.data)
     button_event                             0x20000004   Data           1  stm32xx_it.o(.data)
     rxFlag                                   0x20000008   Data           4  stm32xx_it.o(.data)
@@ -2635,9 +2635,9 @@ Memory Map of the image
 
   Image Entry point : 0x0800028d
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00004c08, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00004bf0, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004b94, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004b7c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2878,47 +2878,47 @@ Memory Map of the image
     0x08004578   0x08004578   0x0000002a   Code   RO         1536    i.list_remove_head  list.o
     0x080045a2   0x080045a2   0x00000020   Code   RO         1537    i.list_remove_node  list.o
     0x080045c2   0x080045c2   0x00000002   PAD
-    0x080045c4   0x080045c4   0x0000030c   Code   RO          326    i.main              main.o
-    0x080048d0   0x080048d0   0x00000024   Code   RO          601    i.move_list         hci.o
-    0x080048f4   0x080048f4   0x0000009c   Code   RO          439    i.setConnectable    sensor_service.o
-    0x08004990   0x08004990   0x00000038   Code   RO         1888    i.set_irq_as_input  stm32_bluenrg_ble.o
-    0x080049c8   0x080049c8   0x0000002c   Code   RO         1889    i.set_irq_as_output  stm32_bluenrg_ble.o
-    0x080049f4   0x080049f4   0x0000000c   Code   RO         4164    i.stdout_putchar    retarget_io.o
-    0x08004a00   0x08004a00   0x0000001c   Code   RO         1890    i.us150Delay        stm32_bluenrg_ble.o
-    0x08004a1c   0x08004a1c   0x0000000a   Code   RO         4413    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x08004a26   0x08004a26   0x00000002   PAD
-    0x08004a28   0x08004a28   0x00000004   Data   RO          162    .constdata          clock.o
-    0x08004a2c   0x08004a2c   0x00000005   Data   RO         1678    .constdata          stm32f4xx_nucleo.o
-    0x08004a31   0x08004a31   0x00000010   Data   RO         3251    .constdata          stm32f4xx_hal_rcc.o
-    0x08004a41   0x08004a41   0x00000017   Data   RO         4165    .constdata          retarget_io.o
-    0x08004a58   0x08004a58   0x00000028   Data   RO         4258    .constdata          c_w.l(_printf_hex_int.o)
-    0x08004a80   0x08004a80   0x00000011   Data   RO         4288    .constdata          c_w.l(__printf_flags_wp.o)
-    0x08004a91   0x08004a91   0x00000003   PAD
-    0x08004a94   0x08004a94   0x000000de   Data   RO          441    .conststring        sensor_service.o
-    0x08004b72   0x08004b72   0x00000002   PAD
-    0x08004b74   0x08004b74   0x00000020   Data   RO         4641    Region$$Table       anon$$obj.o
+    0x080045c4   0x080045c4   0x000002f4   Code   RO          326    i.main              main.o
+    0x080048b8   0x080048b8   0x00000024   Code   RO          601    i.move_list         hci.o
+    0x080048dc   0x080048dc   0x0000009c   Code   RO          439    i.setConnectable    sensor_service.o
+    0x08004978   0x08004978   0x00000038   Code   RO         1888    i.set_irq_as_input  stm32_bluenrg_ble.o
+    0x080049b0   0x080049b0   0x0000002c   Code   RO         1889    i.set_irq_as_output  stm32_bluenrg_ble.o
+    0x080049dc   0x080049dc   0x0000000c   Code   RO         4164    i.stdout_putchar    retarget_io.o
+    0x080049e8   0x080049e8   0x0000001c   Code   RO         1890    i.us150Delay        stm32_bluenrg_ble.o
+    0x08004a04   0x08004a04   0x0000000a   Code   RO         4413    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x08004a0e   0x08004a0e   0x00000002   PAD
+    0x08004a10   0x08004a10   0x00000004   Data   RO          162    .constdata          clock.o
+    0x08004a14   0x08004a14   0x00000005   Data   RO         1678    .constdata          stm32f4xx_nucleo.o
+    0x08004a19   0x08004a19   0x00000010   Data   RO         3251    .constdata          stm32f4xx_hal_rcc.o
+    0x08004a29   0x08004a29   0x00000017   Data   RO         4165    .constdata          retarget_io.o
+    0x08004a40   0x08004a40   0x00000028   Data   RO         4258    .constdata          c_w.l(_printf_hex_int.o)
+    0x08004a68   0x08004a68   0x00000011   Data   RO         4288    .constdata          c_w.l(__printf_flags_wp.o)
+    0x08004a79   0x08004a79   0x00000003   PAD
+    0x08004a7c   0x08004a7c   0x000000de   Data   RO          441    .conststring        sensor_service.o
+    0x08004b5a   0x08004b5a   0x00000002   PAD
+    0x08004b5c   0x08004b5c   0x00000020   Data   RO         4641    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08004b94, Size: 0x00000074, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08004b7c, Size: 0x00000074, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08004b94   0x0000000c   Data   RW          248    .data               stm32xx_it.o
-    0x2000000c   0x08004ba0   0x00000001   Data   RW          328    .data               main.o
-    0x2000000d   0x08004ba1   0x00000003   PAD
-    0x20000010   0x08004ba4   0x0000001e   Data   RW          442    .data               sensor_service.o
-    0x2000002e   0x08004bc2   0x00000002   PAD
-    0x20000030   0x08004bc4   0x00000013   Data   RW          603    .data               hci.o
-    0x20000043   0x08004bd7   0x00000001   PAD
-    0x20000044   0x08004bd8   0x0000000c   Data   RW         1679    .data               stm32f4xx_nucleo.o
-    0x20000050   0x08004be4   0x00000014   Data   RW         1837    .data               system_stm32f4xx.o
-    0x20000064   0x08004bf8   0x00000004   Data   RW         2020    .data               stm32f4xx_hal.o
-    0x20000068   0x08004bfc   0x00000004   Data   RW         4328    .data               c_w.l(stdio_streams.o)
-    0x2000006c   0x08004c00   0x00000004   Data   RW         4329    .data               c_w.l(stdio_streams.o)
-    0x20000070   0x08004c04   0x00000004   Data   RW         4330    .data               c_w.l(stdio_streams.o)
+    0x20000000   0x08004b7c   0x0000000c   Data   RW          248    .data               stm32xx_it.o
+    0x2000000c   0x08004b88   0x00000001   Data   RW          328    .data               main.o
+    0x2000000d   0x08004b89   0x00000003   PAD
+    0x20000010   0x08004b8c   0x0000001e   Data   RW          442    .data               sensor_service.o
+    0x2000002e   0x08004baa   0x00000002   PAD
+    0x20000030   0x08004bac   0x00000013   Data   RW          603    .data               hci.o
+    0x20000043   0x08004bbf   0x00000001   PAD
+    0x20000044   0x08004bc0   0x0000000c   Data   RW         1679    .data               stm32f4xx_nucleo.o
+    0x20000050   0x08004bcc   0x00000014   Data   RW         1837    .data               system_stm32f4xx.o
+    0x20000064   0x08004be0   0x00000004   Data   RW         2020    .data               stm32f4xx_hal.o
+    0x20000068   0x08004be4   0x00000004   Data   RW         4328    .data               c_w.l(stdio_streams.o)
+    0x2000006c   0x08004be8   0x00000004   Data   RW         4329    .data               c_w.l(stdio_streams.o)
+    0x20000070   0x08004bec   0x00000004   Data   RW         4330    .data               c_w.l(stdio_streams.o)
 
 
-    Execution Region ER_ZI (Exec base: 0x20000074, Load base: 0x08004c08, Size: 0x00000ba4, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000074, Load base: 0x08004bf0, Size: 0x00000ba4, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2931,7 +2931,7 @@ Memory Map of the image
     0x2000050c        -       0x00000054   Zero   RW         4326    .bss                c_w.l(stdio_streams.o)
     0x20000560        -       0x00000054   Zero   RW         4327    .bss                c_w.l(stdio_streams.o)
     0x200005b4        -       0x00000060   Zero   RW         4527    .bss                c_w.l(libspace.o)
-    0x20000614   0x08004c08   0x00000004   PAD
+    0x20000614   0x08004bf0   0x00000004   PAD
     0x20000618        -       0x00000200   Zero   RW         4149    HEAP                startup_stm32f401xe.o
     0x20000818        -       0x00000400   Zero   RW         4148    STACK               startup_stm32f401xe.o
 
@@ -2954,7 +2954,7 @@ Image component sizes
         44          0          0          0          0       1820   gp_timer.o
       1182         64          0         19        700      33819   hci.o
        194          0          0          0          0       6873   list.o
-      1038        440          0          1         64      43068   main.o
+      1014        436          0          1         64      43024   main.o
         40          0          0          0          0       1428   osal.o
        388         30         23          0          0       6922   retarget_io.o
       2498        522        222         30         12      11005   sensor_service.o
@@ -2971,7 +2971,7 @@ Image component sizes
        100         18          0         20          0       1201   system_stm32f4xx.o
 
     ----------------------------------------------------------------------
-     14502       1400        708        104       2400     459102   Object Totals
+     14478       1396        708        104       2400     459058   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         24          0          2          6          0          0   (incl. Padding)
 
@@ -3070,15 +3070,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     18580       1638        768        116       2980     449894   Grand Totals
-     18580       1638        768        116       2980     449894   ELF Image Totals
-     18580       1638        768        116          0          0   ROM Totals
+     18556       1634        768        116       2980     449850   Grand Totals
+     18556       1634        768        116       2980     449850   ELF Image Totals
+     18556       1634        768        116          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                19348 (  18.89kB)
+    Total RO  Size (Code + RO Data)                19324 (  18.87kB)
     Total RW  Size (RW Data + ZI Data)              3096 (   3.02kB)
-    Total ROM Size (Code + RO Data + RW Data)      19464 (  19.01kB)
+    Total ROM Size (Code + RO Data + RW Data)      19440 (  18.98kB)
 
 ==============================================================================
 

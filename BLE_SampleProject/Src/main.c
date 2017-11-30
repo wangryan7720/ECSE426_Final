@@ -124,7 +124,7 @@ void User_Process(AxesRaw_t* p_axes);
  */
 int main(void)
 {
-  const char *name = "BlueNRG";
+  const char *name = "GROUP9";
   uint8_t SERVER_BDADDR[] = {0x12, 0x34, 0x00, 0xE1, 0x80, 0x03};
   uint8_t bdaddr[BDADDR_SIZE];
   uint16_t service_handle, dev_name_char_handle, appearance_char_handle;
@@ -284,9 +284,11 @@ int main(void)
   {
 		uint8_t a[5];
 		HAL_UART_Receive(&huart6, &a[0], 5, 1000);
+		/*
 		for (int i = 0; i < 5; i++) {
 				printf("%d\n", a[i]);
 		}
+		*/
 		/*
 		if(rxFlag == 0){
 			printf("Hello\n");
