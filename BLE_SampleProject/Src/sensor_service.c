@@ -565,7 +565,8 @@ void HCI_Event_CB(void *pckt)
       case EVT_BLUE_GATT_READ_PERMIT_REQ:
         {
           evt_gatt_read_permit_req *pr = (void*)blue_evt->data;                    
-          Read_Request_CB(pr->attr_handle);                    
+          Read_Request_CB(pr->attr_handle);  
+					printf("------------------");
         }
         break;
       }

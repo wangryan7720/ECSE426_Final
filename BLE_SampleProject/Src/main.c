@@ -290,15 +290,19 @@ int main(void)
 				printf("%d\n", a[i]);
 		}
 		*/
-		
+		//uint16_t wd = ((uint16_t)d2 << 8) | d1;
+		//(uint16_t) number = (high_byte << 8) + low_byte
 		if(rxFlag == 0){
-			printf("Hello\n");
 			rxFlag = 1;
-			uint8_t a[5];
-			HAL_UART_Receive_IT(&huart6, &a[0], 5);
-			for (int i = 0; i < 5; i++) {
+			uint8_t a[2];
+			HAL_UART_Receive_IT(&huart6, &a[0], 2);
+			uint16_t wd = (a[0] << 8) | a[1];
+			/*
+			for (int i = 0; i < 2; i++) {
 				printf("%d\n", a[i]);
 			}
+			*/
+			//printf("%d\n", wd);
 		}
 		
     HCI_Process();
