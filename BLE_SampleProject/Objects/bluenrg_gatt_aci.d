@@ -1,6 +1,6 @@
 .\objects\bluenrg_gatt_aci.o: BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\hci\controller\bluenrg_gatt_aci.c
 .\objects\bluenrg_gatt_aci.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\hal_types.h
-.\objects\bluenrg_gatt_aci.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bluenrg_gatt_aci.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bluenrg_gatt_aci.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\osal.h
 .\objects\bluenrg_gatt_aci.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\ble_status.h
 .\objects\bluenrg_gatt_aci.o: .\BLE\STM32_BlueNRG\SimpleBlueNRG_HCI\includes\hal.h

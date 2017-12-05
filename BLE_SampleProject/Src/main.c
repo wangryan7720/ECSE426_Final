@@ -282,14 +282,15 @@ int main(void)
 	HAL_UART_MspInit(&huart6);
   while(1)
   {
+		/*
 		uint8_t a[5];
 		HAL_UART_Receive(&huart6, &a[0], 5, 1000);
-		/*
+		
 		for (int i = 0; i < 5; i++) {
 				printf("%d\n", a[i]);
 		}
 		*/
-		/*
+		
 		if(rxFlag == 0){
 			printf("Hello\n");
 			rxFlag = 1;
@@ -299,7 +300,7 @@ int main(void)
 				printf("%d\n", a[i]);
 			}
 		}
-		*/
+		
     HCI_Process();
     User_Process(&axes_data);
 #if NEW_SERVICES
