@@ -40,6 +40,8 @@
 #include "stm32f4xx_hal.h"
 #include "usart.h"
 #include "gpio.h"
+#include "adc.h"
+#include "tim.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -55,7 +57,10 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 extern UART_HandleTypeDef huart5;
-int txFlag = 0;
+extern ADC_HandleTypeDef hadc2;
+extern TIM_HandleTypeDef htim2;
+extern int txFlag;
+extern int timFlag;
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
@@ -89,9 +94,15 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */	
-  MX_GPIO_Init();
+	MX_GPIO_Init();
   MX_UART5_Init();
 	HAL_UART_MspInit(&huart5);
+	MX_TIM2_Init();
+  MX_ADC2_Init();
+	HAL_TIM_Base_Start_IT(&htim2);
+	HAL_TIM_Base_MspInit(&htim2);
+	HAL_ADC_Start(&hadc2);
+	HAL_ADC_MspInit(&hadc2);
 
   /* USER CODE BEGIN 2 */
   
@@ -100,22 +111,34 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	int counter = 0;
+	uint16_t adcVal = 0;
   while (1)
   {
   /* USER CODE END WHILE */
+		if (timFlag == 1) {
+			adcVal = HAL_ADC_GetValue(&hadc2);
+			//printf("%d\n", adcval);
+			timFlag = 0;
+		}
+		
 		while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1) {
-			printf("%d times\n", counter);
+			//printf("%d times\n", counter);
 			counter++;
 		}
 		if (counter > 2000) {
-			printf("Transmit or record\n");
+			//printf("Transmit or record\n");
 		}
 		counter = 0;
 		if (txFlag == 0) {
+			HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
 			txFlag = 1;
-			uint8_t a[5] = {5,2,3,4,5};
-			int b = HAL_UART_Transmit_IT(&huart5, &a[0], 5);
-			//printf("I am here");
+			uint8_t high_byte = adcVal >> 8;
+			uint8_t low_byte = adcVal & 0x00FF;
+			uint8_t a[2] = {high_byte, low_byte};
+			//printf("ADC %d\n", adcVal);
+			//printf("High %d\n", high_byte);
+			//printf("Low %d\n", low_byte);
+			int b = HAL_UART_Transmit_IT(&huart5, &a[0], 2);
 		}
 
   /* USER CODE BEGIN 3 */

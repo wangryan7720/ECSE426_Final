@@ -1,4 +1,4 @@
---cpu Cortex-M4.fp
+--cpu=Cortex-M4.fp
 "final_project\startup_stm32f407xx.o"
 "final_project\system_stm32f4xx.o"
 "final_project\stm32f4xx_hal.o"
@@ -16,13 +16,17 @@
 "final_project\stm32f4xx_hal_cortex.o"
 "final_project\stm32f4xx_hal_tim_ex.o"
 "final_project\stm32f4xx_hal_dma.o"
+"final_project\stm32f4xx_hal_adc.o"
+"final_project\stm32f4xx_hal_adc_ex.o"
 "final_project\stm32f4xx_it.o"
 "final_project\stm32f4xx_hal_msp.o"
 "final_project\gpio.o"
 "final_project\usart.o"
 "final_project\main.o"
 "final_project\fput_debug.o"
+"final_project\adc.o"
+"final_project\tim.o"
 --library_type=microlib --strict --scatter "Final_Project\Final_Project.sct"
---diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "Final_Project.map" -o Final_Project\Final_Project.axf

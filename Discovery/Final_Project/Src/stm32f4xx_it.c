@@ -41,7 +41,9 @@
 
 /* External variables --------------------------------------------------------*/
 extern UART_HandleTypeDef huart5;
-extern int txFlag;
+extern TIM_HandleTypeDef htim2;
+int txFlag = 0;
+int timFlag = 0;
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
 /******************************************************************************/
@@ -80,6 +82,17 @@ void UART5_IRQHandler(void)
   /* USER CODE BEGIN UART5_IRQn 1 */
 
   /* USER CODE END UART5_IRQn 1 */
+}
+
+void TIM2_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM2_IRQn 0 */
+
+  /* USER CODE END TIM2_IRQn 0 */
+	timFlag = 1;
+  HAL_TIM_IRQHandler(&htim2);
+  /* USER CODE BEGIN TIM2_IRQn 1 */	
+  /* USER CODE END TIM2_IRQn 1 */
 }
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
