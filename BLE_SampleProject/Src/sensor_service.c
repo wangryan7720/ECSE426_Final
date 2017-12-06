@@ -60,7 +60,8 @@ volatile AxesRaw_t axes_data = {0, 0, 0};
 uint16_t sampleServHandle, TXCharHandle, RXCharHandle;
 uint16_t accServHandle, freeFallCharHandle, accCharHandle;
 uint16_t envSensServHandle, tempCharHandle, pressCharHandle, humidityCharHandle;
-
+extern uint8_t a[2];
+int counter_henry = 0;
 #if NEW_SERVICES
   uint16_t timeServHandle, secondsCharHandle, minuteCharHandle;
   uint16_t ledServHandle, ledButtonCharHandle;
@@ -192,6 +193,7 @@ tBleStatus Free_Fall_Notify(void)
  * @param  Structure containing acceleration value in mg
  * @retval Status
  */
+/*
 tBleStatus Acc_Update(AxesRaw_t *data)
 {  
   tBleStatus ret;    
@@ -202,6 +204,23 @@ tBleStatus Acc_Update(AxesRaw_t *data)
   STORE_LE_16(buff+4,data->AXIS_Z);
 	
   ret = aci_gatt_update_char_value(accServHandle, accCharHandle, 0, 6, buff);
+	
+  if (ret != BLE_STATUS_SUCCESS){
+    PRINTF("Error while updating ACC characteristic.\n") ;
+    return BLE_STATUS_ERROR ;
+  }
+  return BLE_STATUS_SUCCESS;	
+}*/
+tBleStatus Acc_Update(void)
+{  
+  tBleStatus ret;    
+  //uint8_t buff[6];
+    
+ // STORE_LE_16(buff,data->AXIS_X);
+ // STORE_LE_16(buff+2,data->AXIS_Y);
+  //STORE_LE_16(buff+4,data->AXIS_Z);
+	uint8_t temp[2] = {1,5};
+  ret = aci_gatt_update_char_value(accServHandle, accCharHandle, 0, 2, &temp[0]);
 	
   if (ret != BLE_STATUS_SUCCESS){
     PRINTF("Error while updating ACC characteristic.\n") ;
@@ -470,12 +489,15 @@ void GAP_DisconnectionComplete_CB(void)
 void Read_Request_CB(uint16_t handle)
 {  
   if(handle == accCharHandle + 1){
-    Acc_Update((AxesRaw_t*)&axes_data);
+    //Acc_Update((AxesRaw_t*)&axes_data);
+		Acc_Update();
+		counter_henry += 1;
+		printf("%d\n", counter_henry);
   }  
   else if(handle == tempCharHandle + 1){
     int16_t data;
     data = 210 + ((uint64_t)rand()*15)/RAND_MAX; //sensor emulation        
-    Acc_Update((AxesRaw_t*)&axes_data); //FIXME: to overcome issue on Android App
+   // Acc_Update((AxesRaw_t*)&axes_data); //FIXME: to overcome issue on Android App
                                         // If the user button is not pressed within
                                         // a short time after the connection,
                                         // a pop-up reports a "No valid characteristics found" error.
@@ -566,7 +588,7 @@ void HCI_Event_CB(void *pckt)
         {
           evt_gatt_read_permit_req *pr = (void*)blue_evt->data;                    
           Read_Request_CB(pr->attr_handle);  
-					printf("------------------");
+					//printf("------------------");
         }
         break;
       }

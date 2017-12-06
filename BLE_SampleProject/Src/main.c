@@ -86,6 +86,9 @@ extern volatile uint8_t set_connectable;
 extern volatile int connected;
 extern AxesRaw_t axes_data;
 uint8_t bnrg_expansion_board = IDB04A1; /* at startup, suppose the X-NUCLEO-IDB04A1 is used */
+uint8_t a[2];
+uint8_t ab[12000];
+//uint16_t received_data;
 /**
  * @}
  */
@@ -123,6 +126,7 @@ void User_Process(AxesRaw_t* p_axes);
  * @retval None
  */
 int main(void)
+
 {
   const char *name = "GROUP9";
   uint8_t SERVER_BDADDR[] = {0x12, 0x34, 0x00, 0xE1, 0x80, 0x03};
@@ -280,6 +284,7 @@ int main(void)
 
 	MX_USART6_UART_Init();
 	HAL_UART_MspInit(&huart6);
+	int i = 0;
   while(1)
   {
 		/*
@@ -294,15 +299,21 @@ int main(void)
 		//(uint16_t) number = (high_byte << 8) + low_byte
 		if(rxFlag == 0){
 			rxFlag = 1;
-			uint8_t a[2];
-			HAL_UART_Receive_IT(&huart6, &a[0], 2);
-			uint16_t wd = (a[0] << 8) | a[1];
-			/*
-			for (int i = 0; i < 2; i++) {
-				printf("%d\n", a[i]);
+			uint8_t b[1];
+			HAL_UART_Receive_IT(&huart6, &b[0], 1);
+			ab[i] = b[0];
+			printf("Receiving %d = %d\n",i, ab[i]);
+			i += 1;
+			if(i == 12000){
+				i = 0;
 			}
-			*/
-			//printf("%d\n", wd);
+			//received_data = (a[0] << 8) | a[1];
+			
+			//for (int i = 0; i < 100; i++) {
+			//	printf("%d\n", a[i]);
+			//}
+			
+			
 		}
 		
     HCI_Process();
@@ -372,6 +383,8 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
  * @param  AxesRaw_t* p_axes
  * @retval None
  */
+
+
 void User_Process(AxesRaw_t* p_axes)
 {
   if(set_connectable){
@@ -380,22 +393,24 @@ void User_Process(AxesRaw_t* p_axes)
   }  
 
   /* Check if the user has pushed the button */
-  if(BSP_PB_GetState(BUTTON_KEY) == RESET)
-  {
-    while (BSP_PB_GetState(BUTTON_KEY) == RESET);
+  //if(BSP_PB_GetState(BUTTON_KEY) == RESET)
+  //{
+    //while (BSP_PB_GetState(BUTTON_KEY) == RESET);
     
     //BSP_LED_Toggle(LED2); //used for debugging (BSP_LED_Init() above must be also enabled)
     
+	/*
     if(connected)
     {
-      /* Update acceleration data */
+      // Update acceleration data 
       p_axes->AXIS_X += 1;
       p_axes->AXIS_Y -= 1;
       p_axes->AXIS_Z += 2;
       //PRINTF("ACC: X=%6d Y=%6d Z=%6d\r\n", p_axes->AXIS_X, p_axes->AXIS_Y, p_axes->AXIS_Z);
       Acc_Update(p_axes);
     }
-  }
+*/
+  //}
 }
 
 void _Error_Handler(char * file, int line)

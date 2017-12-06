@@ -62,6 +62,7 @@ volatile uint8_t button_event = 0;
 /* SPI handler declared in "main.c" file */
 extern SPI_HandleTypeDef SpiHandle;
 extern UART_HandleTypeDef huart6;
+extern uint8_t a[2];
 
 int rxFlag = 0;
 /* Private function prototypes -----------------------------------------------*/
@@ -165,6 +166,8 @@ void PUSH_BUTTON_EXTI_IRQHandler(void)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	rxFlag = 0;
+//	a[0] = -1;
+	//a[1] = -1;
 }
 
 void USART6_IRQHandler(void) {
