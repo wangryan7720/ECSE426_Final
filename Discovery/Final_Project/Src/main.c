@@ -78,7 +78,7 @@ uint8_t buffer1[BUFFER_SIZE];
 int i = 0;
 int j = 0;
 int bufferReady = 0;
-uint8_t adcVal = 0;
+uint8_t adcVal;
 uint8_t high_byte;
 uint8_t low_byte;
 int adcDataReady = 0;
@@ -131,7 +131,7 @@ int main(void)
 			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
 		}
 		
-		
+		/*
 		if (timFlag == 1) {
 			adcVal = HAL_ADC_GetValue(&hadc2);
 			//printf("%d\n", adcVal);
@@ -139,16 +139,20 @@ int main(void)
 			adcDataReady = 1;
 		}
 		
-		if (recordingData == 1 && adcDataReady == 1) {
-			adcDataReady = 0;
+		*/
+
+		if (recordingData == 1) {
+			//adcDataReady = 0;
 			//adcVal = HAL_ADC_GetValue(&hadc2);
 			//printf("%d\n", adcVal);
-			timFlag = 0;
+			//timFlag = 0;
 			//high_byte = adcVal >> 8;
 			//low_byte = adcVal & 0x00FF;
 			//timFlag = 0;		
+			if(sec_counter == 2){
 				if (i < BUFFER_SIZE) {
 					buffer1[i] = adcVal;
+					//printf("%d\n", buffer1[i]);
 					//printf("buffer[%d] = %d\n", i, buffer1[i]);
 					i++;
 					//buffer1[i] = low_byte;
@@ -163,8 +167,9 @@ int main(void)
 					isButtonPressed = 0;
 					HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
 				}			
+				sec_counter = 0;
 			}
-		
+		}
 		if(isButtonPressed == 0) {
 			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1) {
 				if(isButtonPressed == 0) {

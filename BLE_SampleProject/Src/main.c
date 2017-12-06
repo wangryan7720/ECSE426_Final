@@ -85,8 +85,9 @@ extern int rxFlag;
 extern volatile uint8_t set_connectable;
 extern volatile int connected;
 extern AxesRaw_t axes_data;
+int read_to_sent_array;
 uint8_t bnrg_expansion_board = IDB04A1; /* at startup, suppose the X-NUCLEO-IDB04A1 is used */
-uint8_t a[2];
+uint8_t a[2] = {0,0};
 uint8_t ab[24000];
 //uint16_t received_data;
 /**
@@ -125,9 +126,7 @@ void User_Process(AxesRaw_t* p_axes);
  * @param  None
  * @retval None
  */
-int main(void)
-
-{
+int main(void){
   const char *name = "GROUP9";
   uint8_t SERVER_BDADDR[] = {0x12, 0x34, 0x00, 0xE1, 0x80, 0x03};
   uint8_t bdaddr[BDADDR_SIZE];
@@ -301,11 +300,15 @@ int main(void)
 			rxFlag = 1;
 			uint8_t b[1];
 			HAL_UART_Receive_IT(&huart6, &b[0], 1);
+	
+			
 			ab[i] = b[0];
-			printf("Receiving %d = %d\n",i, ab[i]);
-			i += 1;
-			if(i == 12000){
+			//printf("Receiving %d = %d\n",i, ab[i]);
+			i++;
+			if(i == 24000){
+				printf("Ready to sent");
 				i = 0;
+				a[0] = 1;
 			}
 			//received_data = (a[0] << 8) | a[1];
 			

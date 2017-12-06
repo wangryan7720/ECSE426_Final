@@ -60,8 +60,10 @@ volatile AxesRaw_t axes_data = {0, 0, 0};
 uint16_t sampleServHandle, TXCharHandle, RXCharHandle;
 uint16_t accServHandle, freeFallCharHandle, accCharHandle;
 uint16_t envSensServHandle, tempCharHandle, pressCharHandle, humidityCharHandle;
-extern uint8_t a[2];
+extern uint8_t a[3];
+extern uint8_t ab[12000];
 int counter_henry = 0;
+int counter_array = 0;
 #if NEW_SERVICES
   uint16_t timeServHandle, secondsCharHandle, minuteCharHandle;
   uint16_t ledServHandle, ledButtonCharHandle;
@@ -219,8 +221,17 @@ tBleStatus Acc_Update(void)
  // STORE_LE_16(buff,data->AXIS_X);
  // STORE_LE_16(buff+2,data->AXIS_Y);
   //STORE_LE_16(buff+4,data->AXIS_Z);
-	uint8_t temp[2] = {1,5};
-  ret = aci_gatt_update_char_value(accServHandle, accCharHandle, 0, 2, &temp[0]);
+	//uint8_t temp[2] = {1,5};
+	
+	if(a[0] == 1){
+		a[1] = ab[counter_array];
+		counter_array += 1;
+	}
+  ret = aci_gatt_update_char_value(accServHandle, accCharHandle, 0, 2, &a[0]);
+	//printf("%d", a[0]);
+	//printf("%d", a[2]);
+	//uint16_t number = (a[1] << 8) + a[2];
+	//printf("%d", number);
 	
   if (ret != BLE_STATUS_SUCCESS){
     PRINTF("Error while updating ACC characteristic.\n") ;
@@ -491,8 +502,9 @@ void Read_Request_CB(uint16_t handle)
   if(handle == accCharHandle + 1){
     //Acc_Update((AxesRaw_t*)&axes_data);
 		Acc_Update();
-		counter_henry += 1;
-		printf("%d\n", counter_henry);
+
+		//counter_henry += 1;
+		//printf("%d\n", counter_henry);
   }  
   else if(handle == tempCharHandle + 1){
     int16_t data;

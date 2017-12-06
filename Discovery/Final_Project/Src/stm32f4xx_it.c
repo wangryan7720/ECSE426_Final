@@ -45,6 +45,8 @@ extern TIM_HandleTypeDef htim2;
 extern int sec_counter;
 int txFlag = 0;
 extern int timFlag;
+extern uint8_t adcVal;
+extern ADC_HandleTypeDef hadc2;
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
 /******************************************************************************/
@@ -93,6 +95,7 @@ void TIM2_IRQHandler(void)
 	
   HAL_TIM_IRQHandler(&htim2);
 	sec_counter += 1;
+	timFlag = 1;
   /* USER CODE BEGIN TIM2_IRQn 1 */	
   /* USER CODE END TIM2_IRQn 1 */
 }
@@ -102,7 +105,8 @@ void EXTI0_IRQHandler(void){
 }
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*htim) {
 	if(htim == &htim2){
-		timFlag = 1;
+		//timFlag = 1;
+		adcVal = HAL_ADC_GetValue(&hadc2);
 	}
 }
 
