@@ -61,13 +61,19 @@ extern ADC_HandleTypeDef hadc2;
 extern TIM_HandleTypeDef htim2;
 extern int txFlag;
 extern int timFlag;
+int sec_counter = 0;
+int isButtonPressed = 0;
+int isFinished = 0;
+int recordingData = 0;
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+//uint16_t buffer[70000];
+uint8_t buffer1[20000];
+uint8_t buffer2[20000];
 /* USER CODE END 0 */
 
 int main(void)
@@ -112,25 +118,68 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	int counter = 0;
 	uint16_t adcVal = 0;
+	int i = 0;
+	int j = 0;
+	int bufferReady = 0;
+	uint8_t high_byte;
+	uint8_t low_byte;
   while (1)
   {
   /* USER CODE END WHILE */
-		if (timFlag == 1) {
-			adcVal = HAL_ADC_GetValue(&hadc2);
-			//printf("%d\n", adcval);
-			timFlag = 0;
+		if (isButtonPressed == 1 && isFinished == 0) {
+			recordingData = 1;
+			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
+			while (recordingData == 1) {
+				if (timFlag == 1) {
+					adcVal = HAL_ADC_GetValue(&hadc2);
+					high_byte = adcVal >> 8;
+					low_byte = adcVal & 0x00FF;
+					if (i < 12000) {
+						buffer1[i] = high_byte;
+						printf("buffer[%d] = %d\n", i, buffer1[i]);
+						i++;
+						buffer1[i] = low_byte;
+						printf("buffer[%d] = %d\n", i, buffer1[i]);
+						i++;
+					} else {
+						printf("Record finished");
+						recordingData = 0;
+						bufferReady = 1;
+						isFinished = 1;
+						isButtonPressed = 0;
+						HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+					}
+				}
+			}
 		}
 		
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1) {
+			if(isButtonPressed == 0) {
+				isButtonPressed = 1;
+				sec_counter = 0;
+			}
+		}
+		
+		/*
 		while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1) {
-			//printf("%d times\n", counter);
+			printf("%d times\n", counter);
 			counter++;
 		}
-		if (counter > 2000) {
+			*/
+		
+		//if (counter > 2000) {
 			//printf("Transmit or record\n");
-		}
-		counter = 0;
-		if (txFlag == 0) {
-			HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+			
+			/*
+			for (int i = 0; i < 80000; i++) {
+				buffer[i] = HAL_ADC_GetValue(&hadc2);
+				printf("%d\n", buffer[i]);
+			}
+			*/
+		//}
+
+		//counter = 0;
+		if (txFlag == 0 && bufferReady == 1 && isFinished == 1) {
 			txFlag = 1;
 			uint8_t high_byte = adcVal >> 8;
 			uint8_t low_byte = adcVal & 0x00FF;
@@ -138,7 +187,12 @@ int main(void)
 			//printf("ADC %d\n", adcVal);
 			//printf("High %d\n", high_byte);
 			//printf("Low %d\n", low_byte);
-			int b = HAL_UART_Transmit_IT(&huart5, &a[0], 2);
+			int b = HAL_UART_Transmit_IT(&huart5, &buffer1[j], 1);
+			j++;
+			printf("Sending %d\n", j);
+			if (j == 12000) {
+				isFinished = 0;
+			}
 		}
 
   /* USER CODE BEGIN 3 */

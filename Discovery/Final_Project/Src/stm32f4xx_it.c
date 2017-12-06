@@ -42,6 +42,7 @@
 /* External variables --------------------------------------------------------*/
 extern UART_HandleTypeDef huart5;
 extern TIM_HandleTypeDef htim2;
+extern int sec_counter;
 int txFlag = 0;
 int timFlag = 0;
 /******************************************************************************/
@@ -91,6 +92,7 @@ void TIM2_IRQHandler(void)
   /* USER CODE END TIM2_IRQn 0 */
 	timFlag = 1;
   HAL_TIM_IRQHandler(&htim2);
+	sec_counter += 1;
   /* USER CODE BEGIN TIM2_IRQn 1 */	
   /* USER CODE END TIM2_IRQn 1 */
 }
