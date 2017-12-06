@@ -44,7 +44,7 @@ extern UART_HandleTypeDef huart5;
 extern TIM_HandleTypeDef htim2;
 extern int sec_counter;
 int txFlag = 0;
-int timFlag = 0;
+extern int timFlag;
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
 /******************************************************************************/
@@ -90,11 +90,20 @@ void TIM2_IRQHandler(void)
   /* USER CODE BEGIN TIM2_IRQn 0 */
 
   /* USER CODE END TIM2_IRQn 0 */
-	timFlag = 1;
+	
   HAL_TIM_IRQHandler(&htim2);
 	sec_counter += 1;
   /* USER CODE BEGIN TIM2_IRQn 1 */	
   /* USER CODE END TIM2_IRQn 1 */
+}
+
+void EXTI0_IRQHandler(void){
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
+}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*htim) {
+	if(htim == &htim2){
+		timFlag = 1;
+	}
 }
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {

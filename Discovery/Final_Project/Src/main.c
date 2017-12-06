@@ -60,7 +60,7 @@ extern UART_HandleTypeDef huart5;
 extern ADC_HandleTypeDef hadc2;
 extern TIM_HandleTypeDef htim2;
 extern int txFlag;
-extern int timFlag;
+int timFlag = 0;
 int sec_counter = 0;
 int isButtonPressed = 0;
 int isFinished = 0;
@@ -76,6 +76,13 @@ uint8_t buffer1[20000];
 uint8_t buffer2[20000];
 /* USER CODE END 0 */
 
+	int i = 0;
+	int j = 0;
+	int bufferReady = 0;
+	uint16_t adcVal = 0;
+
+	uint8_t high_byte;
+	uint8_t low_byte;
 int main(void)
 {
 
@@ -116,31 +123,44 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	int counter = 0;
-	uint16_t adcVal = 0;
-	int i = 0;
-	int j = 0;
-	int bufferReady = 0;
-	uint8_t high_byte;
-	uint8_t low_byte;
+
   while (1)
   {
+		//adcVal = HAL_ADC_GetValue(&hadc2);
+		//printf("%d\n", adcVal);
   /* USER CODE END WHILE */
 		if (isButtonPressed == 1 && isFinished == 0) {
 			recordingData = 1;
 			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-			while (recordingData == 1) {
-				if (timFlag == 1) {
-					adcVal = HAL_ADC_GetValue(&hadc2);
+		}
+		
+		if (timFlag == 1) {
+		
+		adcVal = HAL_ADC_GetValue(&hadc2);
+		//printf("%d\n", adcVal);
+		//high_byte = adcVal >> 8;
+		//low_byte = adcVal & 0x00FF;
+		timFlag = 0;
+		}
+		
+		
+		//printf("I am here \n");
+		if (recordingData == 1) {
+					//adcVal = HAL_ADC_GetValue(&hadc2);
+					//printf("%d\n", adcVal);
 					high_byte = adcVal >> 8;
 					low_byte = adcVal & 0x00FF;
-					if (i < 12000) {
-						buffer1[i] = high_byte;
-						printf("buffer[%d] = %d\n", i, buffer1[i]);
+					//timFlag = 0;
+					
+					
+					if (i < 20000) {
+						//buffer1[i] = high_byte;
+						printf("buffer[%d] = %d\n", i, high_byte);
 						i++;
-						buffer1[i] = low_byte;
-						printf("buffer[%d] = %d\n", i, buffer1[i]);
+						//buffer1[i] = low_byte;
+						printf("buffer[%d] = %d\n", i, low_byte);
 						i++;
+						//timFlag = 0;
 					} else {
 						printf("Record finished");
 						recordingData = 0;
@@ -149,16 +169,27 @@ int main(void)
 						isButtonPressed = 0;
 						HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
 					}
-				}
+					
+					
+				
 			}
-		}
 		
-		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1) {
+		if(isButtonPressed == 0) {
+			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1) {
 			if(isButtonPressed == 0) {
 				isButtonPressed = 1;
 				sec_counter = 0;
 			}
 		}
+	}
+				//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+				//MX_GPIO_Init();
+				 // MX_ADC2_Init();
+				//	HAL_ADC_Start(&hadc2);
+	//HAL_ADC_MspInit(&hadc2);
+				//HAL_GPIO_DeInit(GPIOA, GPIO_PIN_0);
+			
+		
 		
 		/*
 		while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1) {
@@ -189,7 +220,7 @@ int main(void)
 			//printf("Low %d\n", low_byte);
 			int b = HAL_UART_Transmit_IT(&huart5, &buffer1[j], 1);
 			j++;
-			printf("Sending %d\n", j);
+			//printf("Sending %d\n", j);
 			if (j == 12000) {
 				isFinished = 0;
 			}

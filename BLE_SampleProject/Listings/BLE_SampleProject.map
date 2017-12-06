@@ -2220,21 +2220,21 @@ Image Symbol Table
     .data                                    0x2000006c   Section        4  stdio_streams.o(.data)
     .data                                    0x20000070   Section        4  stdio_streams.o(.data)
     .data                                    0x20000074   Section        4  stdio_streams.o(.data)
-    .bss                                     0x20000078   Section    12064  main.o(.bss)
-    .bss                                     0x20002f98   Section       12  sensor_service.o(.bss)
-    .bss                                     0x20002fa4   Section      700  hci.o(.bss)
-    hciReadPacketBuffer                      0x20002fa4   Data         700  hci.o(.bss)
-    .bss                                     0x20003260   Section       88  stm32_bluenrg_ble.o(.bss)
-    .bss                                     0x200032b8   Section      228  rand.o(.bss)
-    .bss                                     0x2000339c   Section       84  stdio_streams.o(.bss)
-    .bss                                     0x200033f0   Section       84  stdio_streams.o(.bss)
-    .bss                                     0x20003444   Section       84  stdio_streams.o(.bss)
-    .bss                                     0x20003498   Section       96  libspace.o(.bss)
-    HEAP                                     0x200034f8   Section      512  startup_stm32f401xe.o(HEAP)
-    Heap_Mem                                 0x200034f8   Data         512  startup_stm32f401xe.o(HEAP)
-    STACK                                    0x200036f8   Section     1024  startup_stm32f401xe.o(STACK)
-    Stack_Mem                                0x200036f8   Data        1024  startup_stm32f401xe.o(STACK)
-    __initial_sp                             0x20003af8   Data           0  startup_stm32f401xe.o(STACK)
+    .bss                                     0x20000078   Section    24064  main.o(.bss)
+    .bss                                     0x20005e78   Section       12  sensor_service.o(.bss)
+    .bss                                     0x20005e84   Section      700  hci.o(.bss)
+    hciReadPacketBuffer                      0x20005e84   Data         700  hci.o(.bss)
+    .bss                                     0x20006140   Section       88  stm32_bluenrg_ble.o(.bss)
+    .bss                                     0x20006198   Section      228  rand.o(.bss)
+    .bss                                     0x2000627c   Section       84  stdio_streams.o(.bss)
+    .bss                                     0x200062d0   Section       84  stdio_streams.o(.bss)
+    .bss                                     0x20006324   Section       84  stdio_streams.o(.bss)
+    .bss                                     0x20006378   Section       96  libspace.o(.bss)
+    HEAP                                     0x200063d8   Section      512  startup_stm32f401xe.o(HEAP)
+    Heap_Mem                                 0x200063d8   Data         512  startup_stm32f401xe.o(HEAP)
+    STACK                                    0x200065d8   Section     1024  startup_stm32f401xe.o(STACK)
+    Stack_Mem                                0x200065d8   Data        1024  startup_stm32f401xe.o(STACK)
+    __initial_sp                             0x200069d8   Data           0  startup_stm32f401xe.o(STACK)
 
     Global Symbols
 
@@ -2631,15 +2631,15 @@ Image Symbol Table
     __aeabi_stdout                           0x20000070   Data           4  stdio_streams.o(.data)
     __aeabi_stderr                           0x20000074   Data           4  stdio_streams.o(.data)
     huart6                                   0x20000078   Data          64  main.o(.bss)
-    ab                                       0x200000b8   Data       12000  main.o(.bss)
-    axes_data                                0x20002f98   Data          12  sensor_service.o(.bss)
-    SpiHandle                                0x20003260   Data          88  stm32_bluenrg_ble.o(.bss)
-    _random_number_data                      0x200032b8   Data         228  rand.o(.bss)
-    __stdin                                  0x2000339c   Data          84  stdio_streams.o(.bss)
-    __stdout                                 0x200033f0   Data          84  stdio_streams.o(.bss)
-    __stderr                                 0x20003444   Data          84  stdio_streams.o(.bss)
-    __libspace_start                         0x20003498   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x200034f8   Data           0  libspace.o(.bss)
+    ab                                       0x200000b8   Data       24000  main.o(.bss)
+    axes_data                                0x20005e78   Data          12  sensor_service.o(.bss)
+    SpiHandle                                0x20006140   Data          88  stm32_bluenrg_ble.o(.bss)
+    _random_number_data                      0x20006198   Data         228  rand.o(.bss)
+    __stdin                                  0x2000627c   Data          84  stdio_streams.o(.bss)
+    __stdout                                 0x200062d0   Data          84  stdio_streams.o(.bss)
+    __stderr                                 0x20006324   Data          84  stdio_streams.o(.bss)
+    __libspace_start                         0x20006378   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x200063d8   Data           0  libspace.o(.bss)
 
 
 
@@ -2937,21 +2937,21 @@ Memory Map of the image
     0x20000074   0x08004d18   0x00000004   Data   RW         4337    .data               c_w.l(stdio_streams.o)
 
 
-    Execution Region ER_ZI (Exec base: 0x20000078, Load base: 0x08004d1c, Size: 0x00003a80, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000078, Load base: 0x08004d1c, Size: 0x00006960, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000078        -       0x00002f20   Zero   RW          333    .bss                main.o
-    0x20002f98        -       0x0000000c   Zero   RW          446    .bss                sensor_service.o
-    0x20002fa4        -       0x000002bc   Zero   RW          609    .bss                hci.o
-    0x20003260        -       0x00000058   Zero   RW         1898    .bss                stm32_bluenrg_ble.o
-    0x200032b8        -       0x000000e4   Zero   RW         4307    .bss                c_w.l(rand.o)
-    0x2000339c        -       0x00000054   Zero   RW         4332    .bss                c_w.l(stdio_streams.o)
-    0x200033f0        -       0x00000054   Zero   RW         4333    .bss                c_w.l(stdio_streams.o)
-    0x20003444        -       0x00000054   Zero   RW         4334    .bss                c_w.l(stdio_streams.o)
-    0x20003498        -       0x00000060   Zero   RW         4534    .bss                c_w.l(libspace.o)
-    0x200034f8        -       0x00000200   Zero   RW         4156    HEAP                startup_stm32f401xe.o
-    0x200036f8        -       0x00000400   Zero   RW         4155    STACK               startup_stm32f401xe.o
+    0x20000078        -       0x00005e00   Zero   RW          333    .bss                main.o
+    0x20005e78        -       0x0000000c   Zero   RW          446    .bss                sensor_service.o
+    0x20005e84        -       0x000002bc   Zero   RW          609    .bss                hci.o
+    0x20006140        -       0x00000058   Zero   RW         1898    .bss                stm32_bluenrg_ble.o
+    0x20006198        -       0x000000e4   Zero   RW         4307    .bss                c_w.l(rand.o)
+    0x2000627c        -       0x00000054   Zero   RW         4332    .bss                c_w.l(stdio_streams.o)
+    0x200062d0        -       0x00000054   Zero   RW         4333    .bss                c_w.l(stdio_streams.o)
+    0x20006324        -       0x00000054   Zero   RW         4334    .bss                c_w.l(stdio_streams.o)
+    0x20006378        -       0x00000060   Zero   RW         4534    .bss                c_w.l(libspace.o)
+    0x200063d8        -       0x00000200   Zero   RW         4156    HEAP                startup_stm32f401xe.o
+    0x200065d8        -       0x00000400   Zero   RW         4155    STACK               startup_stm32f401xe.o
 
 
 ==============================================================================
@@ -2972,7 +2972,7 @@ Image component sizes
         44          0          0          0          0       1820   gp_timer.o
       1182         64          0         19        700      33819   hci.o
        194          0          0          0          0       6873   list.o
-      1030        460          0          3      12064      43093   main.o
+      1030        460          0          3      24064      43097   main.o
         40          0          0          0          0       1428   osal.o
        388         30         23          0          0       6922   retarget_io.o
       2482        532        222         36         12      11019   sensor_service.o
@@ -2989,7 +2989,7 @@ Image component sizes
        100         18          0         20          0       1201   system_stm32f4xx.o
 
     ----------------------------------------------------------------------
-     14774       1430        708        108      14400     462694   Object Totals
+     14774       1430        708        108      26400     462698   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         24          0          2          2          0          0   (incl. Padding)
 
@@ -3088,14 +3088,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     18852       1668        768        120      14976     452886   Grand Totals
-     18852       1668        768        120      14976     452886   ELF Image Totals
+     18852       1668        768        120      26976     452890   Grand Totals
+     18852       1668        768        120      26976     452890   ELF Image Totals
      18852       1668        768        120          0          0   ROM Totals
 
 ==============================================================================
 
     Total RO  Size (Code + RO Data)                19620 (  19.16kB)
-    Total RW  Size (RW Data + ZI Data)             15096 (  14.74kB)
+    Total RW  Size (RW Data + ZI Data)             27096 (  26.46kB)
     Total ROM Size (Code + RO Data + RW Data)      19740 (  19.28kB)
 
 ==============================================================================

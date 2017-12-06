@@ -87,7 +87,7 @@ extern volatile int connected;
 extern AxesRaw_t axes_data;
 uint8_t bnrg_expansion_board = IDB04A1; /* at startup, suppose the X-NUCLEO-IDB04A1 is used */
 uint8_t a[2];
-uint8_t ab[12000];
+uint8_t ab[24000];
 //uint16_t received_data;
 /**
  * @}
