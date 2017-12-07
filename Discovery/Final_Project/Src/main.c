@@ -51,7 +51,7 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-#define BUFFER_SIZE 24000
+#define BUFFER_SIZE 48000
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -131,35 +131,12 @@ int main(void)
 			recordingData = 1;
 			HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
 		}
-		
-		/*
-		if (timFlag == 1) {
-			adcVal = HAL_ADC_GetValue(&hadc2);
-			//printf("%d\n", adcVal);
-			timFlag = 0;
-			adcDataReady = 1;
-		}
-		
-		*/
 
 		if (recordingData == 1) {
-			//adcDataReady = 0;
-			//adcVal = HAL_ADC_GetValue(&hadc2);
-			//printf("%d\n", adcVal);
-			//timFlag = 0;
-			//high_byte = adcVal >> 8;
-			//low_byte = adcVal & 0x00FF;
-			//timFlag = 0;		
 			if(sec_counter == 2){
 				if (i < BUFFER_SIZE) {
 					buffer1[i] = adcVal;
-					//printf("%d\n", buffer1[i]);
-					//printf("buffer[%d] = %d\n", i, buffer1[i]);
 					i++;
-					//buffer1[i] = low_byte;
-					//printf("buffer[%d] = %d\n", i, buffer1[i]);
-					//i++;
-					//timFlag = 0;
 				} else {
 					printf("Record finished");
 					recordingData = 0;
@@ -179,34 +156,6 @@ int main(void)
 				}
 			}
 		}
-				//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-				//MX_GPIO_Init();
-				 // MX_ADC2_Init();
-				//	HAL_ADC_Start(&hadc2);
-	//HAL_ADC_MspInit(&hadc2);
-				//HAL_GPIO_DeInit(GPIOA, GPIO_PIN_0);
-			
-		
-		
-		/*
-		while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1) {
-			printf("%d times\n", counter);
-			counter++;
-		}
-			*/
-		
-		//if (counter > 2000) {
-			//printf("Transmit or record\n");
-			
-			/*
-			for (int i = 0; i < 80000; i++) {
-				buffer[i] = HAL_ADC_GetValue(&hadc2);
-				printf("%d\n", buffer[i]);
-			}
-			*/
-		//}
-
-		//counter = 0;
 		if (txFlag == 0 && bufferReady == 1 && isFinished == 1) {
 			txFlag = 1;
 			//printf("ADC %d\n", adcVal);
