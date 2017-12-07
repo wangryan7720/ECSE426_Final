@@ -87,8 +87,8 @@ extern volatile int connected;
 extern AxesRaw_t axes_data;
 int read_to_sent_array;
 uint8_t bnrg_expansion_board = IDB04A1; /* at startup, suppose the X-NUCLEO-IDB04A1 is used */
-uint8_t a[2] = {0,0};
-uint8_t ab[24000];
+uint8_t a[100];
+uint8_t ab[48000];
 //uint16_t received_data;
 /**
  * @}
@@ -126,7 +126,7 @@ void User_Process(AxesRaw_t* p_axes);
  * @param  None
  * @retval None
  */
-int main(void){
+		int main(void){
   const char *name = "GROUP9";
   uint8_t SERVER_BDADDR[] = {0x12, 0x34, 0x00, 0xE1, 0x80, 0x03};
   uint8_t bdaddr[BDADDR_SIZE];
@@ -134,7 +134,7 @@ int main(void){
   
   uint8_t  hwVersion;
   uint16_t fwVersion;
-  
+  a[0] = 1;
   int ret;  
   
   /* STM32Cube HAL library initialization:
@@ -286,16 +286,6 @@ int main(void){
 	int i = 0;
   while(1)
   {
-		/*
-		uint8_t a[5];
-		HAL_UART_Receive(&huart6, &a[0], 5, 1000);
-		
-		for (int i = 0; i < 5; i++) {
-				printf("%d\n", a[i]);
-		}
-		*/
-		//uint16_t wd = ((uint16_t)d2 << 8) | d1;
-		//(uint16_t) number = (high_byte << 8) + low_byte
 		if(rxFlag == 0){
 			rxFlag = 1;
 			uint8_t b[1];
@@ -303,22 +293,14 @@ int main(void){
 	
 			
 			ab[i] = b[0];
-			//printf("Receiving %d = %d\n",i, ab[i]);
 			i++;
-			if(i == 24000){
-				printf("Ready to sent");
+			if(i == 48000){
+				printf("Ready to sent\n");
 				i = 0;
 				a[0] = 1;
-			}
-			//received_data = (a[0] << 8) | a[1];
-			
-			//for (int i = 0; i < 100; i++) {
-			//	printf("%d\n", a[i]);
-			//}
-			
 			
 		}
-		
+	}
     HCI_Process();
     User_Process(&axes_data);
 #if NEW_SERVICES

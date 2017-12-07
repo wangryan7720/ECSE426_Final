@@ -151,7 +151,7 @@ tBleStatus Add_Acc_Service(void)
   if (ret != BLE_STATUS_SUCCESS) goto fail;
   
   COPY_ACC_UUID(uuid);  
-  ret =  aci_gatt_add_char(accServHandle, UUID_TYPE_128, uuid, 6,
+  ret =  aci_gatt_add_char(accServHandle, UUID_TYPE_128, uuid, 100,
                            CHAR_PROP_NOTIFY|CHAR_PROP_READ,
                            ATTR_PERMISSION_NONE,
                            GATT_NOTIFY_READ_REQ_AND_WAIT_FOR_APPL_RESP,
@@ -195,44 +195,22 @@ tBleStatus Free_Fall_Notify(void)
  * @param  Structure containing acceleration value in mg
  * @retval Status
  */
-/*
-tBleStatus Acc_Update(AxesRaw_t *data)
-{  
-  tBleStatus ret;    
-  uint8_t buff[6];
-    
-  STORE_LE_16(buff,data->AXIS_X);
-  STORE_LE_16(buff+2,data->AXIS_Y);
-  STORE_LE_16(buff+4,data->AXIS_Z);
-	
-  ret = aci_gatt_update_char_value(accServHandle, accCharHandle, 0, 6, buff);
-	
-  if (ret != BLE_STATUS_SUCCESS){
-    PRINTF("Error while updating ACC characteristic.\n") ;
-    return BLE_STATUS_ERROR ;
-  }
-  return BLE_STATUS_SUCCESS;	
-}*/
 tBleStatus Acc_Update(void)
 {  
   tBleStatus ret;    
-  //uint8_t buff[6];
-    
- // STORE_LE_16(buff,data->AXIS_X);
- // STORE_LE_16(buff+2,data->AXIS_Y);
-  //STORE_LE_16(buff+4,data->AXIS_Z);
-	//uint8_t temp[2] = {1,5};
 	
 	if(a[0] == 1){
-		a[1] = ab[counter_array];
-		counter_array += 1;
+		if(counter_array<48000){
+		for(int i=1;i<100;i++){
+			counter_array += 1;
+			if(counter_array == 48000){
+				break;
+			}
+			a[i] = ab[counter_array];
+		}
 	}
-  ret = aci_gatt_update_char_value(accServHandle, accCharHandle, 0, 2, &a[0]);
-	//printf("%d", a[0]);
-	//printf("%d", a[2]);
-	//uint16_t number = (a[1] << 8) + a[2];
-	//printf("%d", number);
-	
+	}
+  ret = aci_gatt_update_char_value(accServHandle, accCharHandle, 0, 100, &a[0]);
   if (ret != BLE_STATUS_SUCCESS){
     PRINTF("Error while updating ACC characteristic.\n") ;
     return BLE_STATUS_ERROR ;
