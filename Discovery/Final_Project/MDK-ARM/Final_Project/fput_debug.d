@@ -1,9 +1,9 @@
 final_project\fput_debug.o: ..\Src\fput_debug.c
-final_project\fput_debug.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+final_project\fput_debug.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 final_project\fput_debug.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 final_project\fput_debug.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
 final_project\fput_debug.o: ../Drivers/CMSIS/Include/core_cm4.h
-final_project\fput_debug.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+final_project\fput_debug.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 final_project\fput_debug.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 final_project\fput_debug.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 final_project\fput_debug.o: ../Drivers/CMSIS/Include/core_cmFunc.h

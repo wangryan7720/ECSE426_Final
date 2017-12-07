@@ -125,6 +125,7 @@ int main(void)
 
   while (1)
   {
+		//printf("%d\n", adcVal);
   /* USER CODE END WHILE */
 		if (isButtonPressed == 1 && isFinished == 0) {
 			recordingData = 1;
@@ -212,6 +213,7 @@ int main(void)
 			//printf("High %d\n", high_byte);
 			//printf("Low %d\n", low_byte);
 			int b = HAL_UART_Transmit_IT(&huart5, &buffer1[j], 1);
+			//printf("Transmitting %d\n", buffer1[j]);
 			for (int k = 0; k < 10000; k++){}
 			j++;
 			//printf("Sending %d\n", j);
